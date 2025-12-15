@@ -5,11 +5,18 @@
     Soy <strong>{{ nombre }}</strong> y quiero aprender Angular porque:
     {{ motivo }}
   </p>
+
+  <hr />
+  <app-contador></app-contador>
+  <hr />
+  <app-registro></app-registro>
+  <hr />
   <div>
     <img src= {{fuente}} alt="elmo">
   </div>
   <div>
     <button (click)="Terminar()"> Terminar</button>
   </div>
+
 </main>
 <router-outlet/>

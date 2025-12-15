@@ -1,0 +1,28 @@
+<h2>Formulario de registro</h2>
+
+<form [formGroup]="registroForm" (ngSubmit)="handleSubmit()">
+  <div>
+    <label>Nombre</label>
+    <input type="text" formControlName="nombre" />
+    <small *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
+      El nombre es obligatorio y debe tener al menos 3 caracteres
+    </small>
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+    <small *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
+      Debe ser un correo electrónico válido
+    </small>
+  </div>
+
+  <div>
+    <label>Mensaje</label>
+    <textarea formControlName="mensaje"></textarea>
+  </div>
+
+  <button type="submit" [disabled]="registroForm.invalid">
+    Enviar
+  </button>
+</form>
