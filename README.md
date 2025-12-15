@@ -18,7 +18,7 @@ El contenido se organiza por unidades, reflejando el avance progresivo en el uso
 
 ```bash
 git clone https://github.com/Leordrz/Curso-de-Desarrollo-con-Angular
-cd clase-1/mi-primera-app-angular
+cd clase-1
 npm install
 ng serve
 ```
