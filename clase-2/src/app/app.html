@@ -1,0 +1,15 @@
+<main style="padding: 16px; font-family: Arial, sans-serif;">
+  <h1>{{ titulo }}</h1>
+
+  <p>
+    Soy <strong>{{ nombre }}</strong> y quiero aprender Angular porque:
+    {{ motivo }}
+  </p>
+  <div>
+    <img src= {{fuente}} alt="elmo">
+  </div>
+  <div>
+    <button (click)="Terminar()"> Terminar</button>
+  </div>
+</main>
+<router-outlet/>
