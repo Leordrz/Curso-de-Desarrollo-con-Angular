@@ -1,0 +1,41 @@
+<div>
+  <h2>Lista de productos</h2>
+
+  <button (click)="simularAgregarProducto()">Simular Carga</button>
+  <button (click)="limpiar()">Vaciar lista</button>
+
+  <p *ngIf="!loading && products.length === 0">
+    No hay productos cargados.
+  </p>
+
+  <ul *ngIf="!loading && products.length > 0">
+    <li *ngFor="let product of products">
+      <h3>{{ product.nombre }}</h3>
+
+      <div>Marca: {{ product.marca }}</div>
+      <div>
+        Stock:
+        <strong>{{ product.stock }}</strong>
+        <span *ngIf="product.stock === 0"> (sin stock)</span>
+      </div>
+
+      <div>
+        Precio:
+        {{ product.precio | currency:'ARS ':'symbol':'1.0-0' }}
+      </div>
+
+      <div>
+        Con descuento ({{ porcentaje_descuento }}%):
+        {{ (product.precio | descuento:porcentaje_descuento) | currency:'ARS ':'symbol':'1.0-0' }}
+      </div>
+
+      <div>
+        Fecha de alta:
+        {{ product.fechaAlta | date:'dd/MM/yyyy' }}
+      </div>
+
+      <button (click)="eliminar(product.id)">Eliminar</button>
+      <hr />
+    </li>
+  </ul>
+</div>
