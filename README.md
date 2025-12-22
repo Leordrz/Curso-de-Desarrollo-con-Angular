@@ -32,10 +32,10 @@ Angular · TypeScript · HTML · CSS · Node.js
 
 ## Capturas
 U1 - Conociendo Angular
-![alt text](/Capturas/clase1.png)
+![alt text](/Capturas/Clase1.png)
 
 U3 - Angular Intermedio
-![alt text](/Capturas/clase3.png)
+![alt text](/Capturas/Clase3.png)
 
 ## Autor
 
