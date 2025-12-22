@@ -30,6 +30,13 @@ http://localhost:4200/
 
 Angular · TypeScript · HTML · CSS · Node.js
 
+## Capturas
+U1 - Conociendo Angular
+![alt text](/Capturas/clase1.png)
+
+U3 - Angular Intermedio
+![alt text](/Capturas/clase3.png)
+
 ## Autor
 
 Leonel Rodríguez  
