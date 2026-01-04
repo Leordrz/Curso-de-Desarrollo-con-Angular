@@ -11,6 +11,8 @@ El contenido se organiza por unidades, reflejando el avance progresivo en el uso
 │   └── mi-primera-app-angular/
 ├── clase-2/
 ├── clase-3/
+├── clase-4/
+│   └── chat-tp/
 └── README.md
 ```
 
@@ -36,6 +38,9 @@ U1 - Conociendo Angular
 
 U3 - Angular Intermedio
 ![alt text](/Capturas/Clase3.png)
+
+U4 - TP Integrador
+![alt text](/Capturas/Clase4.jpg)
 
 ## Autor
 
