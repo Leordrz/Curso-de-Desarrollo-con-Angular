@@ -1,0 +1,78 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <input class="search"
+       placeholder="Buscar..."
+       [value]="searchQuery()"
+       (input)="onSearchInput($any($event.target).value)" />
+      <a class="new" routerLink="/nuevo">+</a>
+    </div>
+
+    <div class="chat-list">
+      @for (chat of filteredChats(); track chat.id) {
+        <a class="chat-item"
+           [routerLink]="['/chats', chat.id]"
+           [class.active]="chat.id === activeChatId()">
+
+          <img class="avatar" [src]="chat.avatarUrl" [alt]="chat.name" />
+
+          <div class="info">
+            <div class="row1">
+              <span class="name">{{ chat.name }}</span>
+              <span class="dot" [class.on]="chat.online"></span>
+            </div>
+            <div class="row2">
+              {{ chat.online | lastSeen: chat.lastSeenLabel }}
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+  </aside>
+  <main class="main">
+    @if (activeChat(); as chat) {
+
+      <header class="topbar">
+        <img class="avatar big" [src]="chat.avatarUrl" [alt]="chat.name" />
+        <div class="title">
+          <div class="name">{{ chat.name }}</div>
+          <div class="status">{{ chat.online | lastSeen: chat.lastSeenLabel }}</div>
+        </div>
+        <div class="spacer"></div>
+        <a class="link" routerLink="/chats">Contactos</a>
+      </header>
+
+      <section class="messages" #messagesContainer>
+        @for (m of messages(); track m.id) {
+          <div class="bubble" [class.user]="m.from === 'user'" [class.app]="m.from === 'app'">
+            <div class="text">{{ m.text }}</div>
+            <div class="time">{{ m.createdAt | date:'shortTime' }}</div>
+          </div>
+        }
+      </section>
+
+      <footer class="composer">
+        <div class="form">
+          <input class="input"
+                 [formControl]="text"
+                 placeholder="Ingrese el texto aquí..."
+                 autocomplete="off"
+                 (keydown.enter)="send(); $event.preventDefault()" />
+
+          <button class="send"
+                  type="button"
+                  aria-label="Send"
+                  (click)="send()">➤</button>
+        </div>
+
+        @if (text.touched && text.invalid) {
+          <div class="hint">Máximo 300 caracteres.</div>
+        }
+      </footer>
+
+    } @else {
+      <div class="empty">Elegir un contacto de la lista.</div>
+    }
+  </main>
+
+</div>

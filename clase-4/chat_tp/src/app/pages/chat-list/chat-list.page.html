@@ -1,0 +1,24 @@
+<div class="page">
+  <header class="header">
+    <input class="search" [formControl]="search" placeholder="Search..." />
+    <a class="new-btn" routerLink="/nuevo">+ New</a>
+  </header>
+
+  <section class="list">
+    @for (chat of filteredChats(); track chat.id) {
+      <a class="item" [routerLink]="['/chats', chat.id]">
+        <img class="avatar" [src]="chat.avatarUrl" [alt]="chat.name" />
+        <div class="meta">
+          <div class="name-row">
+            <span class="name">{{ chat.name }}</span>
+            <span class="dot" [class.on]="chat.online"></span>
+          </div>
+
+          <div class="status">
+            {{ chat.online | lastSeen: chat.lastSeenLabel }}
+          </div>
+        </div>
+      </a>
+    }
+  </section>
+</div>

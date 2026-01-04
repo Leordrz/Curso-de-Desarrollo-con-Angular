@@ -1,0 +1,35 @@
+<div class="page">
+  <h2>Nuevo contacto</h2>
+
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <label class="label">
+      Nombre
+      <input
+        class="input"
+        formControlName="name"
+        placeholder="Escribí un nombre..."
+        aria-label="Nombre del contacto"
+      />
+    </label>
+
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+      <div class="error" role="alert">
+        No puede quedar vacío (mínimo 3 caracteres).
+      </div>
+    }
+
+    <label class="row">
+      <input type="checkbox" formControlName="online" aria-label="Marcar como en línea" />
+      En línea
+    </label>
+
+    <div class="actions">
+      <a class="btn ghost" routerLink="/chats" aria-label="Cancelar y volver a la lista">
+        Cancelar
+      </a>
+      <button class="btn primary" type="submit" aria-label="Guardar contacto">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>
