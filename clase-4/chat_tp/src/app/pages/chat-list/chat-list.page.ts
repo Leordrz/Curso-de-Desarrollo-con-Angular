@@ -1,25 +1,31 @@
+import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { ChatService } from '../../services/chat.service';
+
 import { LastSeenPipe } from '../../pipes/last-seen.pipe';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   standalone: true,
   selector: 'app-chat-list-page',
-  imports: [RouterLink, ReactiveFormsModule, LastSeenPipe],
+  imports: [CommonModule, RouterLink, LastSeenPipe],
   templateUrl: './chat-list.page.html',
   styleUrls: ['./chat-list.page.css']
 })
 export class ChatListPageComponent {
   constructor(public chatService: ChatService) {}
 
-  search = new FormControl<string>('', { nonNullable: true });
+  // Buscador reactivo real (signals)
+  searchQuery = signal<string>('');
 
   filteredChats = computed(() => {
-    const q = this.search.value.trim().toLowerCase();
+    const q = this.searchQuery().trim().toLowerCase();
     const all = this.chatService.chats();
     if (!q) return all;
     return all.filter(c => c.name.toLowerCase().includes(q));
   });
+
+  onSearchInput(value: string) {
+    this.searchQuery.set(value);
+  }
 }

@@ -1,17 +1,32 @@
 <div class="page">
   <header class="header">
-    <input class="search" [formControl]="search" placeholder="Search..." />
-    <a class="new-btn" routerLink="/nuevo">+ New</a>
+    <input
+      #q
+      class="search"
+      type="text"
+      placeholder="Buscar..."
+      aria-label="Buscar chats"
+      (input)="onSearchInput(q.value)"
+    />
+
+    <a class="new-btn" routerLink="/nuevo" aria-label="Crear nuevo contacto">
+      + Nuevo
+    </a>
   </header>
 
-  <section class="list">
+  <section class="list" aria-label="Lista de chats">
     @for (chat of filteredChats(); track chat.id) {
-      <a class="item" [routerLink]="['/chats', chat.id]">
+      <a
+        class="item"
+        [routerLink]="['/chats', chat.id]"
+        aria-label="Abrir chat con {{ chat.name }}"
+      >
         <img class="avatar" [src]="chat.avatarUrl" [alt]="chat.name" />
+
         <div class="meta">
           <div class="name-row">
             <span class="name">{{ chat.name }}</span>
-            <span class="dot" [class.on]="chat.online"></span>
+            <span class="dot" [class.on]="chat.online" aria-hidden="true"></span>
           </div>
 
           <div class="status">
