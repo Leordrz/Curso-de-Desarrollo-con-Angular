@@ -42,6 +42,43 @@ U3 - Angular Intermedio
 U4 - TP Integrador
 ![alt text](/Capturas/Clase4.jpg)
 
+## Estructura del proyecto (resumen)
+
+* src/main.ts: bootstrap de la app (Angular 17).
+* src/app/app.routes.ts: definición de rutas (router).
+* src/app/services/chat.service.ts: Backend simulado en memoria para chats y mensajes.
+* src/app/models/*: interfaces/modelos (Chat, Message).
+* src/app/pages/chat-list/*: pantalla lista de chats + buscador.
+* src/app/pages/chat-detail/*: pantalla detalle del chat + envío de mensajes + autoscroll.
+* src/app/pages/new-chat/*: pantalla alta de nuevo contacto.
+* src/app/pipes/*: pipes propios.
+
+## Rutas disponibles
+* /chats → lista de chats
+* /chats/:id → detalle del chat seleccionado
+* /nuevo → formulario de alta de contacto
+
+## Cómo probar
+
+1. Lista y navegación
+    * Entrar a chats
+    * Click en distintos contactos → cambia el chat y muestra mensajes correspondientes.
+
+2. Buscador
+    * Escribir un nombre (ej: “Elmo”) → se filtra la lista.
+    * Borrar → vuelve la lista completa.
+
+3. Nuevo contacto
+    * Ir a /nuevo
+    * Probar validación: vacío o < 3 caracteres → muestra error.
+    * Crear contacto → aparece en la lista.
+    * Mensajes + respuesta automática
+    * En /chats/:id, enviar un mensaje.
+
+4. UX
+    * Autoscroll: al enviar y al llegar respuesta, la conversación baja al final.
+    * Estilos modernos aplicados en todo el proyecto.
+
 ## Autor
 
 Leonel Rodríguez  
